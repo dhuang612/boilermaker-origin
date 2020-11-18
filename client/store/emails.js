@@ -19,7 +19,6 @@ export const addEmail = (firstName, email) => async dispatch => {
   try {
     const add = await axios.post('/api/emails', {firstName, email})
 
-    console.log(emailToSend)
     // dispatch(getEmails(add))
     history.push('/home/showEmails')
   } catch (error) {

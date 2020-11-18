@@ -620,6 +620,104 @@ var AddShoutout = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(ma
 
 /***/ }),
 
+/***/ "./client/components/shoutoutList.js":
+/*!*******************************************!*\
+  !*** ./client/components/shoutoutList.js ***!
+  \*******************************************/
+/*! exports provided: ShoutoutsList, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShoutoutsList", function() { return ShoutoutsList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ShoutoutsList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ShoutoutsList, _Component);
+
+  function ShoutoutsList() {
+    _classCallCheck(this, ShoutoutsList);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ShoutoutsList).apply(this, arguments));
+  }
+
+  _createClass(ShoutoutsList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.showAllShoutouts();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var shoutouts = this.props.shoutouts.data;
+      console.log(shoutouts);
+
+      if (shoutouts !== [] && shoutouts !== undefined) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, shoutouts.length ? shoutouts.map(function (_ref) {
+          var name = _ref.name,
+              message = _ref.message,
+              id = _ref.id,
+              email = _ref.email;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: id
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "/home/showShoutouts/".concat(id)
+          }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, message, email));
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No shoutouts"));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+      }
+    }
+  }]);
+
+  return ShoutoutsList;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapState = function mapState(state) {
+  return {
+    shoutouts: state.shoutouts
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    showAllShoutouts: function showAllShoutouts() {
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["showShoutouts"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState, mapDispatch)(ShoutoutsList));
+
+/***/ }),
+
 /***/ "./client/components/singleEmail.js":
 /*!******************************************!*\
   !*** ./client/components/singleEmail.js ***!
@@ -792,7 +890,9 @@ var UserHome = function UserHome(props) {
       to: "/home/addShoutout"
     }, "create a new shoutout")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/home/showEmails"
-    }, "show email list"))));
+    }, "show email list")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/home/showShoutouts"
+    }, "show current shoutouts"))));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome, ", email)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/home/addShoutout"
@@ -893,8 +993,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_shoutout_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/shoutout-form */ "./client/components/shoutout-form.js");
 /* harmony import */ var _components_inviteSignup_form__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/inviteSignup-form */ "./client/components/inviteSignup-form.js");
 /* harmony import */ var _components_emailList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/emailList */ "./client/components/emailList.js");
-/* harmony import */ var _components_singleEmail__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/singleEmail */ "./client/components/singleEmail.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./client/store/index.js");
+/* harmony import */ var _components_shoutoutList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/shoutoutList */ "./client/components/shoutoutList.js");
+/* harmony import */ var _components_singleEmail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/singleEmail */ "./client/components/singleEmail.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./store */ "./client/store/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -912,6 +1013,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -975,10 +1077,13 @@ function (_Component) {
         component: _components_emailList__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home/showEmails/:id",
-        component: _components_singleEmail__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _components_singleEmail__WEBPACK_IMPORTED_MODULE_10__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home/addShoutout",
         component: _components_shoutout_form__WEBPACK_IMPORTED_MODULE_6__["AddShoutout"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/home/showShoutouts",
+        component: _components_shoutoutList__WEBPACK_IMPORTED_MODULE_9__["default"]
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/home",
@@ -986,6 +1091,9 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home/addShoutout",
         component: _components_shoutout_form__WEBPACK_IMPORTED_MODULE_6__["AddShoutout"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/home/showShoutouts",
+        component: _components_shoutoutList__WEBPACK_IMPORTED_MODULE_9__["default"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Login"]
       }));
@@ -1011,7 +1119,7 @@ var mapState = function mapState(state) {
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     loadInitialData: function loadInitialData() {
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_10__["me"])());
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_11__["me"])());
     }
   };
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -1112,23 +1220,22 @@ var addEmail = function addEmail(firstName, email) {
 
               case 3:
                 add = _context.sent;
-                console.log(emailToSend); // dispatch(getEmails(add))
-
+                // dispatch(getEmails(add))
                 _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/home/showEmails');
-                _context.next = 11;
+                _context.next = 10;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 7]]);
       }));
 
       return function (_x) {
@@ -1240,8 +1347,7 @@ var sendInviteEmail = function sendInviteEmail(firstName, email) {
       var _ref4 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee4(dispatch) {
-        var _emailToSend;
-
+        var emailToSend;
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -1254,8 +1360,8 @@ var sendInviteEmail = function sendInviteEmail(firstName, email) {
                 });
 
               case 3:
-                _emailToSend = _context4.sent;
-                console.log(_emailToSend); // emailToSend
+                emailToSend = _context4.sent;
+                console.log(emailToSend); // emailToSend
 
                 _context4.next = 10;
                 break;
@@ -1301,7 +1407,7 @@ var sendInviteEmail = function sendInviteEmail(firstName, email) {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, inviteAuth, logout, addEmail, showSingleEmail, showEmails, sendInviteEmail, addShoutout */
+/*! exports provided: default, me, auth, inviteAuth, logout, addEmail, showSingleEmail, showEmails, sendInviteEmail, addShoutout, showShoutouts, showSingleShoutout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1333,6 +1439,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addShoutout", function() { return _shoutouts__WEBPACK_IMPORTED_MODULE_6__["addShoutout"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showShoutouts", function() { return _shoutouts__WEBPACK_IMPORTED_MODULE_6__["showShoutouts"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showSingleShoutout", function() { return _shoutouts__WEBPACK_IMPORTED_MODULE_6__["showSingleShoutout"]; });
+
 
 
 
@@ -1360,25 +1470,45 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!***********************************!*\
   !*** ./client/store/shoutouts.js ***!
   \***********************************/
-/*! exports provided: addShoutout, default */
+/*! exports provided: addShoutout, showShoutouts, showSingleShoutout, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addShoutout", function() { return addShoutout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showShoutouts", function() { return showShoutouts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showSingleShoutout", function() { return showSingleShoutout; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+
 var CREATE_SHOUTOUT = 'CREATE_SHOUTOUT';
+var GET_SHOUTOUTS = "GET_SHOUTOUTS";
+var GET_SINGLE_SHOUTOUT = "GET_SINGLE_SHOUTOUT";
 var shoutout = {};
 
 var newShoutout = function newShoutout(shoutout) {
   return {
     type: CREATE_SHOUTOUT,
+    shoutout: shoutout
+  };
+};
+
+var getShoutouts = function getShoutouts(shoutouts) {
+  return {
+    type: GET_SHOUTOUTS,
+    shoutouts: shoutouts
+  };
+};
+
+var getSingleShoutout = function getSingleShoutout(shoutout) {
+  return {
+    type: GET_SINGLE_SHOUTOUT,
     shoutout: shoutout
   };
 };
@@ -1429,12 +1559,105 @@ var addShoutout = function addShoutout(name, message, email, from) {
     }()
   );
 };
+var showShoutouts = function showShoutouts(id) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        var shoutoutsToFind;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/shoutouts/showAllShoutouts", id);
+
+              case 3:
+                shoutoutsToFind = _context2.sent;
+                console.log('these are your shoutouts', shoutoutsToFind);
+
+                if (shoutoutsToFind) {
+                  dispatch(getShoutouts(shoutoutsToFind));
+                }
+
+                _context2.next = 11;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }()
+  );
+};
+var showSingleShoutout = function showSingleShoutout(id) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var shoutoutToFind;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/shoutouts/".concat(id));
+
+              case 3:
+                shoutoutToFind = _context3.sent;
+                dispatch(getSingleShoutout(shoutoutToFind));
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
+      }));
+
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
+};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : shoutout;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case CREATE_SHOUTOUT:
+      return action.shoutout;
+
+    case GET_SHOUTOUTS:
+      return action.shoutouts;
+
+    case GET_SINGLE_SHOUTOUT:
       return action.shoutout;
 
     default:
@@ -48057,7 +48280,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

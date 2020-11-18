@@ -1,5 +1,5 @@
 const User = require('./user')
-const Shoutouts = require('./shoutout')
+const Shoutout = require('./shoutout')
 const Emails = require('./emails')
 const db = require('../db')
 /**
@@ -9,8 +9,8 @@ const db = require('../db')
  *    BlogPost.belongsTo(User)
  */
 
-User.hasMany(Shoutouts)
-Shoutouts.belongsTo(User)
+User.hasMany(Shoutout)
+Shoutout.belongsTo(User)
 User.hasMany(Emails)
 Emails.belongsTo(User)
 // console.log(User)
@@ -22,7 +22,7 @@ Emails.belongsTo(User)
  */
 module.exports = {
   User,
-  Shoutouts,
+  Shoutout,
   Emails,
   db
 }

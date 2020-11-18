@@ -9,8 +9,10 @@ const Shoutout = db.define('shoutout', {
     },
     email: {
       type: Sequelize.STRING,
-      unique: true,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     }
   },
   message: {

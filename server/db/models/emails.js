@@ -16,10 +16,10 @@ const Emails = db.define('email', {
   },
   email: {
     type: Sequelize.STRING,
-    unique: {
-      args: true,
-      msg: 'Email address already in use!'
-    },
+    // unique: {
+    //   args: true,
+    //   msg: 'Email address already in use!'
+    // },
     validate: {
       isEmail: true
     }

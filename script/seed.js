@@ -2,7 +2,7 @@
 
 const db = require('../server/db')
 const {User} = require('../server/db/models')
-const {Shoutouts} = require('../server/db/models')
+const {Shoutout} = require('../server/db/models')
 const {Emails} = require('../server/db/models')
 
 const models = require('../server/db/models')
@@ -14,7 +14,12 @@ async function seed() {
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'}),
-    User.create({email: 'frank@email.com', password: '456'})
+    Shoutout.create({
+      name: 'Bob',
+      email: 'Bob@email.com',
+      message: 'test msg',
+      from: 'fake@fakeemail.com'
+    })
   ])
   const userOne = users[0]
   const userTwo = users[1]
@@ -23,32 +28,24 @@ async function seed() {
   // console.log(userOne)
   // console.log(users[0].email)
   if (users) {
-    // const shoutouts = await userOne.getShoutouts()
-    const firstShoutout = await userOne.createShoutout({
-      name: users[1].email,
-      message: 'another shoutout!',
-      from: users[2].email
-    })
-    const secondShoutout = await userTwo.createShoutout({
-      name: users[0].email,
-      message: 'second test shoutout!',
-      from: users[1].email
-    })
-    const thirdShoutout = await userThree.createShoutout({
-      name: users[2].email,
-      message: 'final new shoutout!',
-      from: users[0].email
-    })
-
-    const addEmail = await userThree.createEmail({
+    const addEmail = await userOne.createEmail({
       firstName: 'Bob',
       email: 'bob@email.com'
     })
+    // const shoutouts = await userOne.getShoutouts()
+    if (addEmail) {
+      //console.log('this is what addEmail contains', addEmail.dataValues)
+      // const firstShoutout = await userOne.createShoutout({
+      //   name: addEmail.firstName,
+      //   email: addEmail.email,
+      //   message: 'another shoutout!',
+      //   from: ''
+      // })
 
-    console.log(`seeded ${users.length} users`)
-    // console.log('this is what shoutout stores--> ', shoutouts)
+      console.log(`seeded ${users.length} users`)
 
-    console.log(`seeded successfully`)
+      console.log(`seeded successfully`)
+    }
   }
 }
 
